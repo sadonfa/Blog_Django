@@ -1,0 +1,18 @@
+{% extends 'layouts/layaut.html' %}
+
+{% block title %} {{ title }} {% endblock  %}
+
+{% block contenido %}
+
+    <h2> {{ title }} </h2>
+
+    <form method="post" action="">
+        {% csrf_token %} 
+
+        {{ register_form.as_p }}
+
+        <input type="submit" value="Registrarse" />
+    </form>
+
+{% endblock  %}
+

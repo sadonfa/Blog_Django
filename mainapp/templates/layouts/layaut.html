@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>
+        {% block title  %} {% endblock  %}
+        | Proyecto Django </title>
+</head>
+<body>
+    <div class="cabecera" > </div> 
+    <header>       
+        <h1> Developer Web With Django | gegova </h1>  
+       
+       <nav>
+        <ul>
+            <li> <a href="{% url 'index' %}"> Inicio  </a> </li>
+            {% if user.email %}
+                <li>
+                    <a href="{% url 'list-article' %}"> Categorias  </a> 
+                    <ul>
+                        {% for categorie in categories %}
+                            <li> <a href="{% url 'category' categorie.0 %}"> {{ categorie.1 }}  </a> </li>                       
+                        {% endfor %}                    
+                    </ul>
+                
+                </li>
+                {% for page in pages %}            
+                    <li> <a href="{% url 'page' page.2 %}"> {{ page.1 }} </a> </li>
+                {% endfor %} 
+                <li> <a href="{% url 'logout' %}"> Cerrar Sesion  </a> </li>
+            {% else %}
+                <li> <a href="{% url 'register' %}"> Registro  </a> </li>
+                <li> <a href="{% url 'login' %}"> Login  </a> </li>
+            {% endif %}
+                   
+            
+        </ul>
+    </nav>   
+    </header>
+    
+        <div id="content">
+            {% block contenido %}
+                
+            {% endblock contenido %}
+        </div>
+    <footer>
+        <p> Pagina creada por &copy; gegova.co | {% now "d-m-Y" %} </p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends 'layouts/layaut.html' %}
+
+{% block title %} {{ article.title }} {% endblock  %}
+
+{% block contenido %}
+    
+    <h2> {{ article.title }} </h2>
+    <span> {{ article.created_at }} </span>
+    <p>
+        {% if article.image != 'null' and article.image.url|length >= 1   %}
+        <div class="image">
+            <img src=" {{article.image.url}} " />
+        </div>
+
+    {% endif %}
+        {{ article.content|safe }}
+    </p>
+
+{% endblock  %}
+

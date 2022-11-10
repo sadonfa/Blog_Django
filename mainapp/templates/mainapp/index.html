@@ -1,0 +1,23 @@
+{% extends 'layouts/layaut.html' %}
+
+{% block title %} {{ title }} {% endblock  %}
+
+{% block contenido %}
+
+    <h2> {{ title }} </h2>
+
+    {% if messages %}
+        {% for message in messages  %}
+            <div class="alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}        
+    {% endif %}
+    {% if user.email %}
+        <h3> Bienvenido, {{ request.user.first_name }} </h3>
+    {% else %}
+            <h3>Identificate para ver mas cosas</h3>
+    {% endif %}
+    
+{% endblock  %}
+

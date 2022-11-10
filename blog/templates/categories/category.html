@@ -1,0 +1,33 @@
+{% extends 'layouts/layaut.html' %}
+
+{% block title %} {{ category.name }} {% endblock  %}
+
+{% block contenido %}
+
+    <h2> {{ category.name }} </h2>
+    <p> {{ category.description }} </p>
+    {% for article in articles %}
+        <article class="article-item"> 
+            {% if article.image != 'null' and article.image.url|length >= 1   %}
+                <div class="image">
+                    <img src=" {{article.image.url}} " />
+                </div>
+
+            {% endif %}
+                <div class="data">
+                    <h3>{{ article.title }}</h3> 
+                    {% for category in article.categories.all  %}
+                        <a href="#" > {{ category }} </a>
+                    {% endfor %}
+                    <span>
+                        {{ article.user.first_name }} {{article.user.last_name}} |
+                        {{ article.created_at }} </span>
+                    <p>
+                        {{ article.content|safe }}
+                    </p>
+                </div>
+                <div class="clearfix"></div>
+        </article>
+    {% endfor %}
+{% endblock  %}
+

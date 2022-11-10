@@ -1,0 +1,14 @@
+{% extends 'layouts/layaut.html' %}
+
+{% block title %} {{ page.title }} {% endblock  %}
+
+{% block contenido %}
+
+    <h2> {{ page.title }} </h2>
+    <span> {{ page.created_at }} </span>
+    <p>
+        {{ page.content|safe }}
+    </p>
+
+{% endblock  %}
+
